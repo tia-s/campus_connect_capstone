@@ -18,6 +18,7 @@
                     <li><a href="#">Sessions</a></li>
                     <li><a href="#">Lessons</a></li>
                     <li><a href="#">Help</a></li>
+                    <li><a href="#">Logout</a></li>
                 </div>
             
             </ul>
@@ -32,7 +33,8 @@
     if (userData) {
         document.getElementById('profile-user').innerHTML = `
             <p>Email: ${userData.user.email}</p>
-            <p>ID: ${userData.user.id}</p>
+            <p>Role: ${userData.user.role}</p>
+            <p>Name: ${userData.user.firstName + userData.user.lastName} </p>
         `;
     } else {
         document.getElementById('profile-user').innerHTML = `<p>No user data found.</p>`;

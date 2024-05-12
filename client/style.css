@@ -421,3 +421,24 @@ ul, li{
 main{
     margin-top: 10px;
 }
+
+.main-nav-header{
+  height: 20vh;
+}
+
+.main-nav-header nav ul{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 30px;
+}
+
+.main-nav-links{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.main-nav-links a:hover{
+  color: #7492BE;
+}

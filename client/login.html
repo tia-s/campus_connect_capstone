@@ -33,7 +33,7 @@
 
       <main>
         <div class="page-title">Login</div>
-        <form class="form-container">
+        <form class="form-container" id="loginForm">
             <div class="form-group-new">
                 <label for="email">Email:</label><br>
                 <input type="email" id="email" name="email" required><br>
@@ -49,5 +49,40 @@
           </form>
                   
       </main>
+
+      
+    <script>
+      document.getElementById("loginForm").addEventListener("submit", function(event) {
+          event.preventDefault(); 
+          const formData = new FormData(this);
+          const email = formData.get('email');
+          const password = formData.get('password');
+
+          
+          fetch('http://localhost:5000/api/login', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({ email, password })
+          })
+          .then(response => {
+              if (!response.ok) {
+                  throw new Error('Network response was not ok');
+              }
+              return response.json();
+          })
+          .then(data => {
+                // Store user information in sessionStorage
+                sessionStorage.setItem('user', JSON.stringify(data));
+                
+                window.location.href = 'profile.html';
+            })
+            .catch(error => {
+                // Handle error
+                console.error('There was a problem with the fetch operation:', error);
+            });
+      });
+  </script>
 </body>
 </html>

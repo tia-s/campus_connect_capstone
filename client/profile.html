@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+
+
+    <title>Campus Connect</title>
+</head>
+<body>
+    <header class="main-nav-header">
+        <nav>
+            <ul>
+                <li><a href="index.html"><img src="images/logo-with-text.svg" alt="" style="width: 100px; height: 50px;"></a></li>
+                <div class="main-nav-links">
+                    <li><a href="#">Sessions</a></li>
+                    <li><a href="#">Lessons</a></li>
+                    <li><a href="#">Help</a></li>
+                </div>
+            
+            </ul>
+        </nav>
+    </header>
+    <div id="profile-user"></div>
+</body>
+<script>
+    // Retrieve currently logged-in user's data from localStorage
+    const userData = JSON.parse(sessionStorage.getItem('user'));
+    console.log(userData);
+    if (userData) {
+        document.getElementById('profile-user').innerHTML = `
+            <p>Email: ${userData.user.email}</p>
+            <p>ID: ${userData.user.id}</p>
+        `;
+    } else {
+        document.getElementById('profile-user').innerHTML = `<p>No user data found.</p>`;
+    }
+</script>
+</html>

@@ -18,6 +18,10 @@ const pool = mysql.createPool({
   exports.getLessonPlans = async (memberID) => {
     try {
         const connection = await pool.getConnection();
+        const [role] = await connection.query(`SELECT role from Member where memberID = ${memberID};`);
+        const memberRole = role[0].role;
+        let lessonPlans;
+
         const q_tutor = `SELECT lp.lessonPlanID, lp.tutorID, lp.studentSlotID, c.courseName, c.courseUniversity, m.firstName, m.lastName
         FROM LessonPlan lp
         JOIN StudentSlot ss ON lp.studentSlotID = ss.slotID
@@ -32,7 +36,12 @@ const pool = mysql.createPool({
         JOIN Member m ON m.memberID = lp.tutorID
         WHERE ss.studentID = ${memberID};`
 
-        const lessonPlans = await connection.query(q_student);
+        if (memberRole == "student"){
+          lessonPlans = await connection.query(q_student);
+        } else {
+          lessonPlans = await connection.query(q_tutor);
+
+        }
         connection.release();
         return lessonPlans[0];
     } catch (err) {
@@ -49,7 +58,7 @@ const pool = mysql.createPool({
         JOIN LessonPlan lp ON l.lessonPlanID = lp.lessonPlanID
         WHERE lp.lessonPlanID = ${lessonPlanID};`
 
-        const member = await connection.query(q);
+        const [member] = await connection.query(q);
         connection.release();
         return member;
     } catch (err) {

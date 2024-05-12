@@ -593,3 +593,29 @@ img{
 .session-link-btn:hover, .session-submit-btn:hover{
   opacity: 0.7;
 }
+
+.lessons-container {
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  background-color: #ffffff;
+  width:90vw;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.lessons-container:hover {
+  transform: translateY(-2px);
+  transition: transform 0.3s ease;
+}
+
+.lesson-plan-course{
+  font-weight: bold;
+}
+
+.lesson-plan-link{
+  color: #12A195;
+  font-weight: bold;
+}

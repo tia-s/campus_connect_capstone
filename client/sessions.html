@@ -16,18 +16,16 @@
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 initialView: 'dayGridMonth',
                 editable: true,
-                events: [ // Add event data here
+                events: [
                 {
-                    title: 'Sample Event',
+                    title: 'Sample Session',
                     start: '2024-05-12T10:00:00', // Start date and time
                     end: '2024-05-12T12:00:00' // End date and time
                 }
             ],
                 dateClick: function(info) {
-                    // Open the event modal
                     document.getElementById('eventModal').style.display = 'block';
                     
-                    // Set the clicked date as the default start date for the event
                     document.getElementById('start').value = info.dateStr;
     
                     // Clear the eventInfo variable when a date is clicked
@@ -92,9 +90,9 @@
                 <li><a href="index.html"><img src="images/logo-with-text.svg" alt="" style="width: 100px; height: 50px;"></a></li>
                 <div class="main-nav-links">
                     <li><a href="sessions.html">Sessions</a></li>
-                    <li><a href="#">Lessons</a></li>
-                    <li><a href="#">Help</a></li>
-                    <li><a href="#">Logout</a></li>
+                    <li><a href="lessons.html">Lessons</a></li>
+                    <li><a href="help.html">Help</a></li>
+                    <li><a href="logout.html">Logout</a></li>
                 </div>
             
             </ul>

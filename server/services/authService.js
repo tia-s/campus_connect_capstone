@@ -84,19 +84,20 @@ exports.startSession = async (session, credentials) => {
   const { email, password } = credentials;
   if (email && password) {
     try {
-      const [result] = await connection.query('SELECT memberID, firstName, lastName, role, password FROM Member WHERE email = ?', [email]);
+      const [result] = await connection.query('SELECT memberID, firstName, lastName, role, password, email FROM Member WHERE email = ?', [email]);
       connection.release();
 
       if (result.length) {
         const res = result[0]
         const passwordMatch = res.password;
-        return {status: 200, data: res.memberID}
+
+        // return {status: 200, data: res.memberID}
 
         // Compare the provided password with the hashed password
         // const passwordMatch = await bcrypt.compare(password, hashedPassword);
         if (passwordMatch === password) {
-          const id = res.memberID;
-          session.user = { memberID, firstName, lastName, role, password };
+          const { memberID, firstName, lastName, role, email } = res;
+          session.user = { id: memberID, firstName, lastName, role, email, password: passwordMatch };
           return { status: 200, data: { user : session.user } }; // Successful login
         } else {
           return { status: 401, data: { error: "Invalid email or password."} }; // Unauthorized

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+      <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap" rel="stylesheet" />
+
+  <!-- font awesome style -->
+  <link href="css/font-awesome.min.css" rel="stylesheet" />
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="css/responsive.css" rel="stylesheet" />
+    <title>Campus Connect</title>
+</head>
+<body>
+    <header class="header_section long_section px-0">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <a class="navbar-brand" href="index.html">
+            <span>
+              <img src="./images/logo-with-text.svg">
+            </span>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class=""> </span>
+          </button>
+  </nav>
+
+      </header>
+
+      <main>
+        <div class='registration-container'>
+            <form>
+                <!-- User Information Section -->
+                <h2>User Information</h2>
+                <label>Email:</label>
+                <input type="email" name="email" required><br>
+              
+                <label>Phone:</label>
+                <input type="tel" name="phone" required><br>
+              
+                <label>Password:</label>
+                <input type="password" name="password" required><br>
+              
+                <label>First Name:</label>
+                <input type="text" name="firstName" required><br>
+              
+                <label>Last Name:</label>
+                <input type="text" name="lastName" required><br>
+              
+                <!-- Preferences Section -->
+                <h2>Preferences</h2>
+                <h3>Primary Learning Style</h3>
+                <label>Auditory:</label>
+                <input type="range" name="primaryLearningStyle-Auditory" min="0" max="100"><br>
+                <label>Visual:</label>
+                <input type="range" name="primaryLearningStyle-Visual" min="0" max="100"><br>
+                <label>Kinesthetic:</label>
+                <input type="range" name="primaryLearningStyle-Kinesthetic" min="0" max="100"><br>
+              
+                <h3>Secondary Learning Style</h3>
+                <label>Solitary:</label>
+                <input type="range" name="secondaryLearningStyle-Solitary" min="0" max="100"><br>
+                <label>Social:</label>
+                <input type="range" name="secondaryLearningStyle-Social" min="0" max="100"><br>
+              
+                <h3>Preferred Communication Method</h3>
+                <label>Video:</label>
+                <input type="range" name="preferredCommunicationMethod-Video" min="0" max="100"><br>
+                <label>Audio:</label>
+                <input type="range" name="preferredCommunicationMethod-Audio" min="0" max="100"><br>
+                <label>Chat:</label>
+                <input type="range" name="preferredCommunicationMethod-Chat" min="0" max="100"><br>
+              
+                <h3>Preferred Communication Style</h3>
+                <label>Direct:</label>
+                <input type="range" name="preferredCommunicationStyle-Direct" min="0" max="100"><br>
+                <label>Conversational:</label>
+                <input type="range" name="preferredCommunicationStyle-Conversational" min="0" max="100"><br>
+              
+                <!-- Additional Information Section -->
+                <h2>Additional Information</h2>
+                <label>MBTI:</label>
+                <input type="text" name="mbti"><br>
+              
+                <label>Courses:</label>
+                <input type="text" name="courses"><br>
+              
+                <label>Goals:</label>
+                <input type="text" name="goals"><br>
+              
+                <h2>Schedule:</h2><br>
+                <label>Monday</label>
+                <input type="text" name="schedule-0"><br>
+                <label>Tuesday</label>
+                <input type="text" name="schedule-1"><br>
+                <label>Wednesday</label>
+                <input type="text" name="schedule-2"><br>
+                <label>Thursday</label>
+                <input type="text" name="schedule-3"><br>
+                <label>Friday</label>
+                <input type="text" name="schedule-4"><br>
+                <label>Saturday</label>
+                <input type="text" name="schedule-5"><br>
+                <label>Sunday</label>
+                <input type="text" name="schedule-6"><br>
+              
+                <!-- Submit Button -->
+                <button class="t-btn" type="submit">Register</button>
+
+              </form>
+              
+        </div>
+      </main>
+</body>
+</html>

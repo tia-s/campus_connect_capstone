@@ -15,7 +15,7 @@
             <ul>
                 <li><a href="index.html"><img src="images/logo-with-text.svg" alt="" style="width: 100px; height: 50px;"></a></li>
                 <div class="main-nav-links">
-                    <li><a href="#">Sessions</a></li>
+                    <li><a href="sessions.html">Sessions</a></li>
                     <li><a href="#">Lessons</a></li>
                     <li><a href="#">Help</a></li>
                     <li><a href="#">Logout</a></li>
@@ -24,7 +24,15 @@
             </ul>
         </nav>
     </header>
-    <div id="profile-user"></div>
+    <div class="page-title">My Profile</div>
+    <div class="profile-container">
+        <div class="profile-img">
+            <span class="profile-img-icon"><i class="fa-solid fa-user"></i></span>
+        </div>
+        <div id="profile-user"></div>
+    </div>
+    <div id="profile-user-reviews" class="profile-user-reviews-container"></div>
+
 </body>
 <script>
     // Retrieve currently logged-in user's data from localStorage
@@ -32,10 +40,19 @@
     console.log(userData);
     if (userData) {
         document.getElementById('profile-user').innerHTML = `
-            <p>Email: ${userData.user.email}</p>
-            <p>Role: ${userData.user.role}</p>
-            <p>Name: ${userData.user.firstName + userData.user.lastName} </p>
+            <p class='profile-name'>${userData.user.firstName + " " + userData.user.lastName} </p>
+            <p class='profile-email'>${userData.user.email}</p>
+            <p class='profile-role'>${userData.user.role}</p>
         `;
+        if (userData.user.role == "tutor"){
+            document.getElementById('profile-user-reviews').innerHTML = `
+                <p class='profile-review-page-title'>Reviews for ${userData.user.firstName + " " + userData.user.lastName}</p>
+                <div class='profile-user-review'>
+                <p class='profile-review-title'>Review 1</p>
+                <p class='profile-review-comment'>Amazing tutor!</p>
+                </div>
+            `;
+        }
     } else {
         document.getElementById('profile-user').innerHTML = `<p>No user data found.</p>`;
     }

@@ -32,6 +32,7 @@ body{
 .page-title{
   /* color: var(--accent); */
   font-size: 20px;
+  margin-bottom: 20px;
 }
 button{
   outline: none;
@@ -441,4 +442,154 @@ main{
 
 .main-nav-links a:hover{
   color: #7492BE;
+}
+
+.form-group-new input{
+  padding: 15px;
+}
+
+.header-logo{
+  border: 1px solid red;
+  
+}
+
+
+img{
+  width: 100%;
+  height: auto;
+}
+
+.profile-img{
+  border: 3px solid #1BA499;
+  width: 10vw;
+  height: 10vw;
+  padding: 20px;
+  text-align: center;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+
+}
+
+.profile-img-icon{
+  font-size: 80px;
+  color: #12A195;
+}
+
+.profile-container{
+  /* border: 1px solid green; */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.profile-name {
+  font-weight: bold;
+}
+
+.profile-role{
+  border: 1px solid #12A195;
+  background-color: #12A195;
+  width: 50%;
+  margin: 10px auto;
+  color: #f0f0f0;
+}
+
+.profile-user-reviews-container{
+  padding: 20px;
+  width: 90vw;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.profile-review-page-title{
+  font-weight: bold;
+}
+
+.profile-review-title{
+  font-style: italic;
+}
+
+.profile-user-review{
+  margin: 20px;
+  padding: 10px;
+  background-color: #b0e7e2;
+  color: #000;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  font-weight: 300;
+}
+
+.sessions-container{
+  width: 80vw;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+/* Modal styles */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1000; /* Set a high z-index value */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scrolling if needed */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  overflow-y: hidden;
+}
+
+.modal input{
+  padding: 5px;
+  width: 90%;
+  margin-bottom: 20px;
+}
+
+.modal label{
+  font-weight: bold;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; 
+}
+/* Close button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.session-link-btn{
+  background-color: #12A195;
+  color: #fdfdfd;
+  transition: opacity 0.5s;
+  -webkit-transition: opacity 0.5s;
+  -moz-transition: opacity 0.5s;
+  -ms-transition: opacity 0.5s;
+  -o-transition: opacity 0.5s;
+}
+
+.session-link-btn:hover, .session-submit-btn:hover{
+  opacity: 0.7;
 }

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@6.1.11/index.global.min.js'></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <title>Campus Connect</title>
+    <script>
+        // Declare a global variable to store event information
+        var eventInfo;
+    
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                editable: true,
+                events: [ // Add event data here
+                {
+                    title: 'Sample Event',
+                    start: '2024-05-12T10:00:00', // Start date and time
+                    end: '2024-05-12T12:00:00' // End date and time
+                }
+            ],
+                dateClick: function(info) {
+                    // Open the event modal
+                    document.getElementById('eventModal').style.display = 'block';
+                    
+                    // Set the clicked date as the default start date for the event
+                    document.getElementById('start').value = info.dateStr;
+    
+                    // Clear the eventInfo variable when a date is clicked
+                    eventInfo = null;
+                },
+                eventClick: function(info) {
+                    // Store event information in the global variable
+                    eventInfo = info;
+    
+                    // Populate modal with event details
+                    document.getElementById('title').value = info.event.title;
+                    document.getElementById('start').value = info.event.start.toISOString().slice(0,16);
+                    document.getElementById('end').value = info.event.end ? info.event.end.toISOString().slice(0,16) : '';
+    
+                    document.getElementById('submitButton').innerText = 'Update';
+    
+                    // Open the modal
+                    document.getElementById('eventModal').style.display = 'block';
+                }
+            });
+            calendar.render();
+    
+            // Close the modal when the user clicks on the close button
+            document.getElementsByClassName('close')[0].onclick = function() {
+                document.getElementById('eventModal').style.display = 'none';
+            };
+    
+            // Handle form submission for both creating and editing events
+            document.getElementById('eventForm').addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent form submission
+    
+                // Get event details from the form
+                var title = document.getElementById('title').value;
+                var start = document.getElementById('start').value;
+                var end = document.getElementById('end').value;
+    
+                // If an event is being edited, update the event
+                if (eventInfo) {
+                    var eventToUpdate = calendar.getEventById(eventInfo.event.id);
+                    eventToUpdate.setProp('title', title);
+                    eventToUpdate.setStart(start);
+                    eventToUpdate.setEnd(end);
+                } else { // Otherwise, create a new event
+                    calendar.addEvent({
+                        title: title,
+                        start: start,
+                        end: end
+                    });
+                }
+    
+                document.getElementById('eventModal').style.display = 'none';
+            });
+        });
+    </script>
+    
+      
+</head>
+<body>
+    <header class="main-nav-header">
+        <nav>
+            <ul>
+                <li><a href="index.html"><img src="images/logo-with-text.svg" alt="" style="width: 100px; height: 50px;"></a></li>
+                <div class="main-nav-links">
+                    <li><a href="sessions.html">Sessions</a></li>
+                    <li><a href="#">Lessons</a></li>
+                    <li><a href="#">Help</a></li>
+                    <li><a href="#">Logout</a></li>
+                </div>
+            
+            </ul>
+        </nav>
+    </header>
+    <div class="page-title">Sessions</div>
+    <div id="calendar" class="sessions-container"></div>
+
+    <div id="eventModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <form id="eventForm">
+            <label for="title">Title:</label><br>
+            <input type="text" id="title" name="title" required><br>
+            <label for="start">Start Time:</label><br>
+            <input type="datetime-local" id="start" name="start" required><br>
+            <label for="end">End Time:</label><br>
+            <input type="datetime-local" id="end" name="end" required><br><br>
+            <button type="submit" id="submitButton" class="session-submit-btn">Submit</button>
+            <button id="linkToSessionButton" class="session-link-btn">Link to Session</button>
+
+          </form>
+        </div>
+    </div>
+</body>
+
+</html>
